@@ -1,3 +1,5 @@
+import DeleteTask from "@/components/delete-task";
+import EditTask from "@/components/edit-task";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -12,24 +14,9 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
-import {
-  Check,
-  List,
-  ListCheck,
-  Plus,
-  SquarePen,
-  Trash,
-  X,
-} from "lucide-react";
+import { Check, List, ListCheck, Plus, Trash, X } from "lucide-react";
 
 const Home = () => {
   return (
@@ -63,40 +50,9 @@ const Home = () => {
             <div className="h-14 flex justify-between items-center border-t">
               <div className="w-1 h-full bg-green-300"></div>
               <p className="flex-1 px-2 text-base">Study React</p>
-              <div className="flex items-center gap-2">
-                <Dialog>
-                  <DialogTrigger
-                    render={<SquarePen size={18} className="cursor-pointer" />}
-                  ></DialogTrigger>
-                  <DialogContent>
-                    <DialogHeader>
-                      <DialogTitle>Editar tarefa</DialogTitle>
-                    </DialogHeader>
-                    <div className="flex gap-2">
-                      <Input placeholder="Editar tarefa" />
-                      <Button className="cursor-pointer">Editar</Button>
-                    </div>
-                  </DialogContent>
-                </Dialog>
-                <AlertDialog>
-                  <AlertDialogTrigger
-                    render={<Trash size={18} className="cursor-pointer" />}
-                  />
-                  <AlertDialogContent>
-                    <AlertDialogHeader>
-                      <AlertDialogTitle>
-                        Deseja excluir esta tarefa?
-                      </AlertDialogTitle>
-                      <AlertDialogDescription>
-                        Está ação não poderá ser desfeita.
-                      </AlertDialogDescription>
-                    </AlertDialogHeader>
-                    <AlertDialogFooter>
-                      <AlertDialogCancel>Não</AlertDialogCancel>
-                      <AlertDialogAction>Sim</AlertDialogAction>
-                    </AlertDialogFooter>
-                  </AlertDialogContent>
-                </AlertDialog>
+              <div className="flex items-center ">
+                <EditTask />
+                <DeleteTask />
               </div>
             </div>
           </div>
