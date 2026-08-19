@@ -3,9 +3,11 @@
 import { db } from "@/app/_lib/prisma";
 
 export const getTasks = async () => {
-  const tasks = await db.tasks.findMany({});
-
-  if (!tasks) return;
-  console.log(tasks);
-  return tasks;
+  try {
+    const tasks = await db.tasks.findMany({});
+    return tasks;
+  } catch (error) {
+    console.error("Erro ao buscar Tarefas", error);
+    return [];
+  }
 };
