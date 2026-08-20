@@ -6,7 +6,7 @@ import { Card, CardContent, CardHeader } from "@/app/_components/ui/card";
 import { Input } from "@/app/_components/ui/input";
 import { Separator } from "@/app/_components/ui/separator";
 import { Check, List, ListCheck, Plus, Trash, X } from "lucide-react";
-import { getTasks } from "@/app/_actions/get-tasks";
+import { getTasks } from "@/app/_data-access/get-tasks";
 
 const Home = async () => {
   const tasks = await getTasks();
