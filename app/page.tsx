@@ -3,22 +3,18 @@ import EditTask from "@/app/_components/edit-task";
 import { Badge } from "@/app/_components/ui/badge";
 import { Button } from "@/app/_components/ui/button";
 import { Card, CardContent, CardHeader } from "@/app/_components/ui/card";
-import { Input } from "@/app/_components/ui/input";
 import { Separator } from "@/app/_components/ui/separator";
-import { Check, List, ListCheck, Plus, Trash, X } from "lucide-react";
+import { Check, List, ListCheck, Trash, X } from "lucide-react";
 import { getTasks } from "@/app/_data-access/get-tasks";
+import AddTask from "./_components/add-task";
 
 const Home = async () => {
   const tasks = await getTasks();
   return (
     <main className="w-full h-screen bg-gray-100 flex justify-center items-center">
       <Card className="w-xl border-none">
-        <CardHeader className="flex gap-2">
-          <Input placeholder="Adicionar tarefa..." />
-          <Button className="cursor-pointer">
-            <Plus />
-            Adicionar
-          </Button>
+        <CardHeader>
+          <AddTask />
         </CardHeader>
         <CardContent>
           <Separator className="mb-2" />
