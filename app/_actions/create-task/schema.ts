@@ -5,7 +5,7 @@ export const createTaskSchema = z.object({
   task: z
     .string()
     .trim()
-    .min(0.01, { message: "O nome da tarefa é obrigatório!" }),
+    .min(1, { message: "O nome da tarefa é obrigatório!" }),
   done: z.boolean().default(false),
 });
 
