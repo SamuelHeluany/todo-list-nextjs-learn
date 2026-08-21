@@ -10,7 +10,7 @@ export const CreateTask = async (data: CreateTaskSchema) => {
     const validatedData = createTaskSchema.parse(data);
 
     // Insere no banco
-    const newTask = await db.tasks.create({
+    await db.tasks.create({
       data: {
         task: validatedData.task,
         done: validatedData.done,
