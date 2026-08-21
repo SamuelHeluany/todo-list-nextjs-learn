@@ -1,37 +1,65 @@
 "use client";
 
-import { useState } from "react";
 import { Input } from "./ui/input";
 import { Button } from "./ui/button";
 import { Plus } from "lucide-react";
 import { CreateTask } from "../_actions/create-task";
+import { useForm } from "react-hook-form";
+import {
+  createTaskSchema,
+  CreateTaskSchema,
+} from "../_actions/create-task/schema";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { Spinner } from "@/components/ui/spinner";
 
 export default function AddTask() {
-  const [task, setTaskName] = useState<string>("");
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors, isSubmitting },
+  } = useForm<CreateTaskSchema>({
+    resolver: zodResolver(createTaskSchema),
+    defaultValues: {
+      task: "",
+      done: false,
+    },
+  });
 
-  const handleSubmit = async (e: React.SubmitEvent) => {
-    e.preventDefault();
-    if (!task.trim()) return;
-
+  const onSubmit = async (data: CreateTaskSchema) => {
     try {
-      await CreateTask({ task, done: false });
-      setTaskName("");
-      console.log(...task);
+      await CreateTask({ task: data.task, done: false });
+      reset();
     } catch (error) {
-      console.error(error);
+      console.log(error);
     }
   };
 
   return (
-    <form onSubmit={handleSubmit} className="flex gap-2">
-      <Input
-        value={task}
-        placeholder="Adicionar tarefa..."
-        onChange={(e) => setTaskName(e.target.value)}
-      />
-      <Button className="cursor-pointer" type="submit">
+    <form onSubmit={handleSubmit(onSubmit)} className="flex gap-2">
+      <div className="grid w-full">
+        <Input
+          {...register("task")}
+          placeholder="Adicione uma tarefa..."
+          disabled={isSubmitting}
+        />
+        {/* mesagem de erro zod */}
+        {errors.task && (
+          <span className="text-sm text-red-500 font-medium">
+            {errors.task.message}
+          </span>
+        )}
+      </div>
+
+      <Button className="cursor-pointer" type="submit" disabled={isSubmitting}>
         <Plus />
-        Adicionar
+        {isSubmitting ? (
+          <>
+            <Spinner /> <span>Adicionando...</span>
+          </>
+        ) : (
+          "Adicionar"
+        )}
       </Button>
     </form>
   );
