@@ -8,8 +8,13 @@ declare global {
 }
 
 const createPrismaClient = () => {
-  // 1. Cria a conexão usando a biblioteca nativa pg
-  const pool = new Pool({ connectionString: process.env.DATABASE_URL });
+  // 1. Cria a conexão configurando o SSL no Pool da biblioteca pg
+  const pool = new Pool({
+    connectionString: process.env.DATABASE_URL,
+    ssl: {
+      rejectUnauthorized: true, // Garante o comportamento 'verify-full' sem emitir o warning
+    },
+  });
 
   // 2. Passa o pool para o Adapter
   const adapter = new PrismaPg(pool);
