@@ -1,3 +1,5 @@
+"use client";
+
 import { Trash } from "lucide-react";
 import {
   AlertDialog,
@@ -10,8 +12,19 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "./ui/alert-dialog";
+import { DeleteTaskSchema } from "../_actions/delete-task/schema";
+import { deleteTask } from "../_actions/delete-task";
+import { toast } from "sonner";
 
-const DeleteTask = () => {
+const DeleteTask = ({ id }: DeleteTaskSchema) => {
+  const handleDeleteTask = async () => {
+    try {
+      await deleteTask({ id: id });
+      toast.success("Tarefa deletada com Sucesso!");
+    } catch (error) {
+      throw error;
+    }
+  };
   return (
     <AlertDialog>
       <AlertDialogTrigger
@@ -30,7 +43,7 @@ const DeleteTask = () => {
         </AlertDialogHeader>
         <AlertDialogFooter>
           <AlertDialogCancel>Não</AlertDialogCancel>
-          <AlertDialogAction>Sim</AlertDialogAction>
+          <AlertDialogAction onClick={handleDeleteTask}>Sim</AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>

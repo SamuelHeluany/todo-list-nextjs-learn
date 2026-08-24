@@ -4,7 +4,7 @@ import { db } from "@/app/_lib/prisma";
 import { createTaskSchema, CreateTaskSchema } from "./schema";
 import { revalidatePath } from "next/cache";
 
-export const CreateTask = async (data: CreateTaskSchema) => {
+export const createTask = async (data: CreateTaskSchema) => {
   try {
     // Valida e aplica os valores default do Zod (ex: done = false)
     const validatedData = createTaskSchema.parse(data);

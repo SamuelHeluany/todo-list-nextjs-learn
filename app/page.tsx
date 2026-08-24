@@ -43,7 +43,7 @@ const Home = async () => {
                 <p className="flex-1 px-2 text-base">{task.task}</p>
                 <div className="flex items-center ">
                   <EditTask />
-                  <DeleteTask />
+                  <DeleteTask id={task.id} />
                 </div>
               </div>
             ))}
