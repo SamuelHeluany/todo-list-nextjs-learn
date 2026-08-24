@@ -3,14 +3,15 @@
 import { Input } from "./ui/input";
 import { Button } from "./ui/button";
 import { Plus } from "lucide-react";
-import { CreateTask } from "../_actions/create-task";
+import { createTask } from "../_actions/create-task";
 import { useForm } from "react-hook-form";
 import {
   createTaskSchema,
   CreateTaskSchema,
 } from "../_actions/create-task/schema";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Spinner } from "@/components/ui/spinner";
+import { Spinner } from "@/app/_components/ui/spinner";
+import { toast } from "sonner";
 
 export default function AddTask() {
   const {
@@ -28,8 +29,9 @@ export default function AddTask() {
 
   const onSubmit = async (data: CreateTaskSchema) => {
     try {
-      await CreateTask({ task: data.task, done: false });
+      await createTask({ task: data.task, done: false });
       reset();
+      toast.success("Tarefa criada com sucesso!");
     } catch (error) {
       console.log(error);
     }
