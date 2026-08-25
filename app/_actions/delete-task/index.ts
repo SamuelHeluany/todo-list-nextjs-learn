@@ -13,7 +13,7 @@ export const deleteTask = async ({ id }: DeleteTaskSchema) => {
       },
     });
   } catch (error) {
-    console.log(error);
+    console.error(error);
   }
   revalidatePath("/");
 };
