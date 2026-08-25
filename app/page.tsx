@@ -1,15 +1,12 @@
-import DeleteTask from "@/app/_components/delete-task";
-import EditTask from "@/app/_components/edit-task";
 import { Badge } from "@/app/_components/ui/badge";
 import { Button } from "@/app/_components/ui/button";
 import { Card, CardContent, CardHeader } from "@/app/_components/ui/card";
 import { Separator } from "@/app/_components/ui/separator";
 import { Check, List, ListCheck, Trash, X } from "lucide-react";
-import { getTasks } from "@/app/_data-access/get-tasks";
-import AddTask from "./_components/add-task";
+import AddTask from "@/app/_components/add-task";
+import TaskList from "./_components/tasks";
 
 const Home = async () => {
-  const tasks = await getTasks();
   return (
     <main className="w-full h-screen bg-gray-100 flex justify-center items-center">
       <Card className="w-xl border-none">
@@ -32,22 +29,7 @@ const Home = async () => {
               Concluídas
             </Badge>
           </div>
-
-          <div className="mt-4 border-b">
-            {tasks.map((task) => (
-              <div
-                className="h-14 flex justify-between items-center border-t"
-                key={task.id}
-              >
-                <div className="w-1 h-full bg-green-300"></div>
-                <p className="flex-1 px-2 text-base">{task.task}</p>
-                <div className="flex items-center ">
-                  <EditTask />
-                  <DeleteTask id={task.id} />
-                </div>
-              </div>
-            ))}
-          </div>
+          <TaskList />
 
           <div className="flex justify-between mt-4">
             <div className="flex items-center">

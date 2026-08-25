@@ -12,8 +12,8 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "./ui/alert-dialog";
-import { DeleteTaskSchema } from "../_actions/delete-task/schema";
-import { deleteTask } from "../_actions/delete-task";
+import { DeleteTaskSchema } from "@/app/_actions/delete-task/schema";
+import { deleteTask } from "@/app/_actions/delete-task/index";
 import { toast } from "sonner";
 
 const DeleteTask = ({ id }: DeleteTaskSchema) => {
