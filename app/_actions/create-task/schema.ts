@@ -1,6 +1,6 @@
 import z from "zod";
 
-export const createTaskSchema = z.object({
+export const upsertTaskSchema = z.object({
   id: z.uuid().optional(),
   task: z
     .string()
@@ -9,4 +9,4 @@ export const createTaskSchema = z.object({
   done: z.boolean(),
 });
 
-export type CreateTaskSchema = z.infer<typeof createTaskSchema>;
+export type UpsertTaskSchema = z.infer<typeof upsertTaskSchema>;

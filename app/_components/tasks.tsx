@@ -20,7 +20,7 @@ const TaskList = async () => {
 
           <p className="flex-1 px-2 text-base">{task.task}</p>
           <div className="flex items-center ">
-            <EditTask />
+            <EditTask task={task} />
             <DeleteTask id={task.id} />
             <ToggleTaskButton id={task.id} done={task.done} />
           </div>
