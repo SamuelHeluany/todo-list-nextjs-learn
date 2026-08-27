@@ -3,12 +3,12 @@
 import { Input } from "./ui/input";
 import { Button } from "./ui/button";
 import { Plus } from "lucide-react";
-import { upsertTask } from "../_actions/create-task";
+import { upsertTask } from "../_actions/upsert-task";
 import { useForm } from "react-hook-form";
 import {
   upsertTaskSchema,
   UpsertTaskSchema,
-} from "../_actions/create-task/schema";
+} from "../_actions/upsert-task/schema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Spinner } from "@/app/_components/ui/spinner";
 import { toast } from "sonner";

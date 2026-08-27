@@ -13,12 +13,12 @@ import { Button } from "./ui/button";
 import { Tasks } from "../generated/prisma";
 import { useState } from "react";
 import { toast } from "sonner";
-import { upsertTask } from "../_actions/create-task";
+import { upsertTask } from "../_actions/upsert-task";
 import { useForm } from "react-hook-form";
 import {
   upsertTaskSchema,
   UpsertTaskSchema,
-} from "../_actions/create-task/schema";
+} from "../_actions/upsert-task/schema";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 interface TaskProps {
