@@ -52,6 +52,7 @@ const EditTask = ({ task }: TaskProps) => {
       toast.success("Nome da tarefa editada com sucesso!");
       setIsOpen(false);
     } catch (error) {
+      console.error(error);
       toast.error("Erro ao editar a tarefa.");
     }
   };
