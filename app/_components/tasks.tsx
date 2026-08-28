@@ -1,15 +1,18 @@
-import { getTasks } from "../_data-access/get-tasks";
+import { Tasks } from "../generated/prisma";
 import DeleteTask from "./delete-task";
 import EditTask from "./edit-task";
 import ToggleTaskButton from "./toggle-task-button";
 
-const TaskList = async () => {
-  const tasks = await getTasks();
+interface TaskListProps {
+  tasks: Tasks[];
+}
+
+const TaskList = ({ tasks }: TaskListProps) => {
   return (
     <div className="mt-4 border-b">
       {tasks.length === 0 ? (
         <p className="text-sm py-4 border-t w-full text-center">
-          Você não possui tarefas cadastradas.
+          Não há tarefas a serem exibidas aqui.
         </p>
       ) : (
         tasks.map((task) => (
