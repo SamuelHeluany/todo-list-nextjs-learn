@@ -3,7 +3,7 @@ import DeleteTask from "./delete-task";
 import EditTask from "./edit-task";
 import ToggleTaskButton from "./toggle-task-button";
 
-interface TaskListProps {
+export interface TaskListProps {
   tasks: Tasks[];
 }
 
